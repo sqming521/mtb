@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'apps.base.apps.BaseConfig',
     'apps.task.apps.TaskConfig',
     'apps.msg.apps.MsgConfig',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -126,6 +127,20 @@ STATIC_URL = '/static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
+REST_FRAMEWORK = {
+# # 版本配置
+#     "DEFAULT_VERSIONING_CLASS": "rest_framework.versioning.QueryParameterVersioning",   #通过GET传参
+#     "DEFAULT_VERSION": "v1",
+#     "ALLOWED_VERSIONS": ["v1"],
+#     "VERSION_PARAM": "version",
+
+# 认证配置
+    "DEFAULT_AUTHENTICATION_CLASSES": ["utils.extension.auth.JwtTokenAuthentication", ],
+    "UNAUTHENTICATED_USER": lambda: None,
+    "UNAUTHENTICATED_TOKEN": lambda: None,
+# # 分页设置
+#     "DEFAULT_PAGINATION_CLASS": "api.extension.page.DigLimitOffsetPagination"
+}
 
 
 try:

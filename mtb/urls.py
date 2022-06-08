@@ -15,7 +15,9 @@ Including another URLconf
 """
 #
 from django.urls import path,include
-
+from apps.base.views import wx
 urlpatterns = [
     path('api/base/',include('apps.base.urls')),
+    path('<str:filename>.txt',wx.file_verify),
+
 ]

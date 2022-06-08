@@ -144,6 +144,6 @@ REST_FRAMEWORK = {
 
 
 try:
-    from local_settings import *
+    from .local_settings import *
 except ImportError:
     pass

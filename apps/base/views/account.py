@@ -20,7 +20,7 @@ class AuthView(APIView):
         # 1. 表单验证，用户名密码不能为空
         serializer = AuthSerializer(data=request.data)
         if not serializer.is_valid():
-            return Response({"code": return_code.VALIDATE_ERROR, 'detail': serializer.errors})
+            return Response({"code": return_code.FIELD_ERROR, 'detail': serializer.errors})
 
         # 2.数据库查询
         username = serializer.validated_data.get('username')

@@ -27,7 +27,7 @@ class AuthView(APIView):
         password = serializer.validated_data.get('password')
         user_object = models.UserInfo.objects.filter(username=username, password=password).first()
         if not user_object:
-            return Response({"code": return_code.VALIDATE_ERROR, 'error': "用户名或密码错误"})
+            return Response({"code": return_code.VALIDATE_ERROR, 'detail': "用户名或密码错误"})
 
         # 登陆成功，生成token
         headers = {

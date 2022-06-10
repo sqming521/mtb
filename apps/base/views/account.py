@@ -15,10 +15,10 @@ class AuthView(APIView):
     authentication_classes = []
     permission_classes = []
 
-    def post(self, requset, *args, **kwargs):
+    def post(self, request, *args, **kwargs):
 
         # 1. 表单验证，用户名密码不能为空
-        serializer = AuthSerializer(data=requset.data)
+        serializer = AuthSerializer(data=request.data)
         if not serializer.is_valid():
             return Response({"code": return_code.VALIDATE_ERROR, 'detail': serializer.errors})
 

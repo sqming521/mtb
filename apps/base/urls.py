@@ -16,7 +16,7 @@ Including another URLconf
 
 from django.urls import path
 from rest_framework import routers
-from .views import account
+from .views import account,wx
 
 router = routers.SimpleRouter()
 
@@ -25,6 +25,8 @@ router = routers.SimpleRouter()
 urlpatterns = [
     path('auth/',account.AuthView.as_view()),
     path('test/',account.TestView.as_view()),
+    path('wxurl/', wx.WxUrlView.as_view()),
+    path('wxcallback',wx.WxCallBackView.as_view(),name='wx_callback'),
 ]
 
 urlpatterns += router.urls

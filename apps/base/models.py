@@ -7,6 +7,8 @@ class WxCode(models.Model):
     """ 微信授权相关的码 """
     code_type_choices = (
         (1, "component_verify_ticket"),
+        (2, "component_access_token"),
+        (3, "pre_auth_code")
     )
 
     code_type = models.IntegerField(verbose_name="类型", choices=code_type_choices)

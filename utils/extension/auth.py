@@ -12,6 +12,7 @@ class CurrentUser:
         self.user_id = user_id
         self.username = username
         self.exp = exp
+
 class MtbAuthenticationFailed(AuthenticationFailed):
     status_code = 200
 
@@ -26,7 +27,7 @@ class JwtTokenAuthentication(BaseAuthentication):
         try:
             payload = jwt.decode(token, settings.SECRET_KEY, ["HS256"])
             print(type(payload), payload)
-            return CurrentUser(**payload),token
+            return CurrentUser(**payload),token #即为request.user request.auth
         except Exception as e:
             print(e)
             raise AuthenticationFailed({'code': return_code.AUTH_FAILED, 'error': "认证失败"})

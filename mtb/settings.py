@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/3.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
-
+import os.path
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -127,6 +127,11 @@ STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+UPLOAD_PATH = "uploads/"
+MEDIA_URL = "/media/"
+
+
 
 REST_FRAMEWORK = {
 # # 版本配置
@@ -134,6 +139,7 @@ REST_FRAMEWORK = {
 #     "DEFAULT_VERSION": "v1",
 #     "ALLOWED_VERSIONS": ["v1"],
 #     "VERSION_PARAM": "version",
+
 
 # 认证配置
     "DEFAULT_AUTHENTICATION_CLASSES": ["utils.extension.auth.JwtTokenAuthentication", ],

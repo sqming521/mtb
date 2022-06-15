@@ -14,10 +14,15 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 
-from django.urls import path,include
+from django.urls import path, include
 from apps.base.views import wx
+
 urlpatterns = [
-    path('api/base/',include('apps.base.urls')),
-    path('<str:filename>.txt',wx.file_verify),
-    path('auth/',wx.component_verify_ticket),
+    path('api/base/', include('apps.base.urls')),
+    path('api/msg/', include('apps.msg.urls')),
+
+
+    path('<str:filename>.txt', wx.file_verify),
+    path('auth/', wx.component_verify_ticket),
+    path('<str:authorizer_app_id>', wx.event_callback),
 ]
